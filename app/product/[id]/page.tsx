@@ -1,6 +1,19 @@
 import Image from "next/image";
 
 
+export async function generateMetadata({params}: {params: {id: number}}) {
+  let product
+  if (params.id)
+    product = await getProduct(params.id);
+
+  return {
+    title: product.title,
+    openGraph: {
+      images: [product.image]
+    }
+  }
+}
+
 async function getProduct(id: number) {
     const res = await fetch(`https://fakestoreapi.com/products/${id}`)
 
