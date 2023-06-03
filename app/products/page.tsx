@@ -1,5 +1,6 @@
 import Image from 'next/image'
 import Link from 'next/link'
+import styles from './styles.module.css'
 
 export const metadata = {
   title: 'Products',
@@ -41,7 +42,7 @@ export default async function Products() {
 
       <div>
         {!cars.message && cars.map((item: any, index: number) => (
-          <Link key={item.id} href={`/product/${index+1}`}>
+          <Link key={item.id} href={`/product/${index+1}`} className={styles.productCard}>
              <Image 
               src={`https://picsum.photos/id/${index}/200/300`}
               alt={item.model}
