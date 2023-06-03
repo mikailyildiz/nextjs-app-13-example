@@ -1,3 +1,4 @@
+import Image from "next/image";
 
 
 async function getProduct(id: number) {
@@ -15,6 +16,13 @@ if (params.id)
     return (
         <main className="flex min-h-screen flex-col items-center justify-between p-24">
           <div >
+            <Image
+              src={product.image}
+              alt={product.title}
+              width="200"
+              height="200"
+              priority={true}
+            />
             <h2>{product.title}</h2>
             <span>{product.price}</span>
             <p>{product.description}</p>
