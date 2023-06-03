@@ -1,6 +1,11 @@
 import Image from 'next/image'
 import Link from 'next/link'
 
+export const metadata = {
+  title: 'Products',
+  description: 'Free shipping on millions of items.',
+}
+
 async function getCars() {
 
   const res = await fetch(`https://car-data.p.rapidapi.com/cars?limit=10&page=0`, {
