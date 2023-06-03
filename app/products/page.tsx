@@ -41,7 +41,7 @@ export default async function Products() {
 
       <div>
         {!cars.message && cars.map((item: any, index: number) => (
-          <Link key={item.id} href={`/product/${index}`}>
+          <Link key={item.id} href={`/product/${index+1}`}>
             {item.model}
             <p>{item.make} - {item.type} - {item.year}</p>
           </Link>
