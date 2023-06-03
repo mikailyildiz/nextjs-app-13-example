@@ -1,3 +1,4 @@
+import BackButton from "@/app/components/backButton";
 import Image from "next/image";
 
 
@@ -28,6 +29,7 @@ if (params.id)
 
     return (
         <main className="flex min-h-screen flex-col items-center justify-between p-24">
+          <BackButton />
           <div >
             <Image
               src={product.image}
