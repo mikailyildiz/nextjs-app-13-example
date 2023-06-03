@@ -42,6 +42,13 @@ export default async function Products() {
       <div>
         {!cars.message && cars.map((item: any, index: number) => (
           <Link key={item.id} href={`/product/${index+1}`}>
+             <Image 
+              src={`https://picsum.photos/id/${index}/200/300`}
+              alt={item.model}
+              width="100"
+              height="100"
+              priority={index < 5}
+            />
             {item.model}
             <p>{item.make} - {item.type} - {item.year}</p>
           </Link>
