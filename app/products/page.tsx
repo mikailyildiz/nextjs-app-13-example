@@ -4,6 +4,11 @@ import Link from 'next/link'
 export const metadata = {
   title: 'Products',
   description: 'Free shipping on millions of items.',
+  openGraph: {
+    title: 'Products',
+    description: 'Free shipping on millions of items.',
+    images: ['https://m.media-amazon.com/images/G/01/gno/sprites/nav-sprite-global-2x-hm-dsk-reorg._CB405937547_.png']
+  }
 }
 
 async function getCars() {
