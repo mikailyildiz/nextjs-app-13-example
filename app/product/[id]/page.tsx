@@ -1,6 +1,10 @@
 import BackButton from "@/app/components/backButton";
 import Image from "next/image";
 
+// type PageProps = {
+//   params: { id: number };
+//   searchParams: { [key: string]: string | string[] | undefined };
+// }
 
 export async function generateMetadata({params}: {params: {id: number}}) {
   let product

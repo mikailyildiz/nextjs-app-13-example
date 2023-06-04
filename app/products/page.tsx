@@ -6,6 +6,11 @@ import Pagination from '../components/pagination'
 const totalProducts= 100
 const itemsPerPage = 10
 
+// type PageProps = {
+//     params: { id: number };
+//     searchParams: { [key: string]: string | string[] | undefined };
+// }
+
 export const metadata = {
   title: 'Products',
   description: 'Free shipping on millions of items.',
