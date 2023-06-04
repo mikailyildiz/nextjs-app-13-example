@@ -12,9 +12,14 @@ export const metadata = {
   }
 }
 
-async function getCars() {
+async function getCars(params: { limit: number, page: number }) {
 
-  const res = await fetch(`https://car-data.p.rapidapi.com/cars?limit=10&page=0`, {
+  const {
+    limit,
+    page
+  } = params
+
+  const res = await fetch(`https://car-data.p.rapidapi.com/cars?limit=${limit}&page=${page}`, {
     headers: {
       'X-RapidAPI-Key': '8ae64da025mshd21566c45ee9c3cp1332d8jsn7b361ec6038a',
       'X-RapidAPI-Host': 'car-data.p.rapidapi.com'
@@ -24,9 +29,10 @@ async function getCars() {
   return res.json()
 }
 
-export default async function Products() {
+export default async function Products({searchParams}: {searchParams: { [key: string]: number }}) {
 
-  const cars = await getCars()
+  const page = Number(searchParams?.page) || 0
+  const cars = await getCars({limit: 10, page: page})
 
   return (
     <main className="flex min-h-screen flex-col items-center justify-between p-24">
@@ -54,6 +60,17 @@ export default async function Products() {
             <p>{item.make} - {item.type} - {item.year}</p>
           </Link>
         ))}
+      </div>
+      <div>
+        {page == 0 ? <span>Prev</span> : 
+          <Link href={ page == 1 ? '/products' : `/products?page=${page - 1}`}>
+            Prev
+          </Link>
+        }
+        &nbsp;-&nbsp;
+        <Link href={`/products?page=${page + 1}`}>
+          Next
+        </Link>
       </div>
 
     </main>
