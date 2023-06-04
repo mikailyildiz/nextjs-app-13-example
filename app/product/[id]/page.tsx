@@ -1,6 +1,6 @@
-import BackButton from "@/app/components/backButton";
-import getProduct from "@/app/lib/getProduct";
-import Image from "next/image";
+import BackButton from '@/app/components/backButton'
+import getProduct from '@/app/lib/getProduct'
+import Image from 'next/image'
 
 // type PageProps = {
 //   params: { id: number };
@@ -10,7 +10,7 @@ import Image from "next/image";
 export async function generateMetadata({params}: {params: {id: number}}) {
   let product
   if (params.id)
-    product = await getProduct(params.id);
+    product = await getProduct(params.id)
 
   return {
     title: product.title,
