@@ -1,4 +1,5 @@
 import BackButton from "@/app/components/backButton";
+import getProduct from "@/app/lib/getProduct";
 import Image from "next/image";
 
 // type PageProps = {
@@ -17,12 +18,6 @@ export async function generateMetadata({params}: {params: {id: number}}) {
       images: [product.image]
     }
   }
-}
-
-async function getProduct(id: number) {
-    const res = await fetch(`https://fakestoreapi.com/products/${id}`)
-
-    return res.json();
 }
 
 export default async function Products({params}: {params: {id: number}}) {

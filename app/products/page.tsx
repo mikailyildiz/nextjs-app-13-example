@@ -1,7 +1,8 @@
 import Image from 'next/image'
 import Link from 'next/link'
 import styles from './styles.module.css'
-import Pagination from '../components/pagination'
+import Pagination from '@/app/components/pagination'
+import getProducts from '@/app/lib/getProducts'
 
 const totalProducts= 100
 const itemsPerPage = 10
@@ -21,27 +22,11 @@ export const metadata = {
   }
 }
 
-async function getCars(params: { limit: number, page: number }) {
-
-  const {
-    limit,
-    page
-  } = params
-
-  const res = await fetch(`https://car-data.p.rapidapi.com/cars?limit=${limit}&page=${page}`, {
-    headers: {
-      'X-RapidAPI-Key': '8ae64da025mshd21566c45ee9c3cp1332d8jsn7b361ec6038a',
-      'X-RapidAPI-Host': 'car-data.p.rapidapi.com'
-    }
-  })
-
-  return res.json()
-}
 
 export default async function Products({searchParams}: {searchParams: { [key: string]: number }}) {
 
   const page = Number(searchParams?.page) || 0
-  const cars = await getCars({limit: itemsPerPage, page: page})
+  const cars = await getProducts({limit: itemsPerPage, page: page})
 
   return (
     <main className="flex min-h-screen flex-col items-center justify-between p-24">
