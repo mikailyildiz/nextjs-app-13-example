@@ -21,6 +21,14 @@ export const metadata = {
   }
 }
 
+export async function generateStaticParams() {
+  const categories = await getCategories()
+ 
+  return categories.map((item: [string]) => ({
+    category: item,
+  }));
+}
+
 export default async function Products({params, searchParams}: {params: { category: string }, searchParams: { [key: string]: number }}) {
 
   const page = Number(searchParams?.page) || 0
