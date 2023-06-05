@@ -5,7 +5,7 @@ import Pagination from '@/app/components/pagination'
 import getProducts from '@/app/lib/getProducts'
 
 const totalProducts= 100
-const itemsPerPage = 10
+const itemsPerPage = 20
 
 // type PageProps = {
 //     params: { id: number };
@@ -26,7 +26,7 @@ export const metadata = {
 export default async function Products({searchParams}: {searchParams: { [key: string]: number }}) {
 
   const page = Number(searchParams?.page) || 0
-  const cars = await getProducts({limit: itemsPerPage, page: page})
+  const products = await getProducts({limit: itemsPerPage, page: page})
 
   return (
     <main className="flex min-h-screen flex-col items-center justify-between p-24">
@@ -41,17 +41,17 @@ export default async function Products({searchParams}: {searchParams: { [key: st
 
       <div className="z-10 w-full max-w-5xl items-center justify-between font-mono text-sm lg:flex">
         <div>
-          {!cars.message && cars.map((item: any, index: number) => (
-            <Link key={item.id} href={`/product/${index+1}`} className={styles.productCard}>
+          {!products.message && products.map((item: any, index: number) => (
+            <Link key={item.id} href={`/product/${item.id}`} className={styles.productCard}>
               <Image 
-                src={`https://picsum.photos/id/${index}/200/300`}
-                alt={item.model}
+                src={item.image}
+                alt={item.title}
                 width="100"
                 height="100"
-                priority={index < 5}
+                priority={index < 3}
               />
-              {item.model}
-              <p>{item.make} - {item.type} - {item.year}</p>
+              {item.title}
+              <p>{item.category} - {item.price}</p>
             </Link>
           ))}
         </div>
