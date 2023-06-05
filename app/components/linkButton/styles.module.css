@@ -1,0 +1,13 @@
+.linkButton {
+  padding: 4px;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+  display: inline-block;
+  margin-right: 3px;
+  text-align: center;
+}
+
+.active {
+  background: white;
+  color: black;
+}
