@@ -3,6 +3,7 @@ import Link from 'next/link'
 import Pagination from '@/app/components/pagination'
 import getProducts from '@/app/lib/getProducts'
 import ProductsPage from '../components/productsPage'
+import getCategories from '../lib/getCategories'
 
 const totalProducts= 100
 const itemsPerPage = 20
@@ -26,7 +27,13 @@ export const metadata = {
 export default async function Products({searchParams}: {searchParams: { [key: string]: number }}) {
 
   const page = Number(searchParams?.page) || 0
-  const products = await getProducts({limit: itemsPerPage, page: page})
+  
+  // const products = await getProducts({limit: itemsPerPage, page: page})
+  // const categories = await getCategories()
+
+  const productsData = getProducts({limit: itemsPerPage, page: page})
+  const categoriesData = getCategories()
+  const [products, categories] = await Promise.all([productsData, categoriesData]);
 
   return (
    <ProductsPage
@@ -34,6 +41,7 @@ export default async function Products({searchParams}: {searchParams: { [key: st
     currentPage={page}
     totalProducts={totalProducts}
     itemsPerPage={itemsPerPage}
+    categories={categories}
    />
   )
 }

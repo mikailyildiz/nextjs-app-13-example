@@ -1,4 +1,5 @@
 import ProductsPage from '@/app/components/productsPage'
+import getCategories from '@/app/lib/getCategories'
 import getProducts from '@/app/lib/getProducts'
 import getProductsInCategory from '@/app/lib/getProductsInCategory'
 
@@ -20,14 +21,17 @@ export const metadata = {
   }
 }
 
-
 export default async function Products({params, searchParams}: {params: { category: string }, searchParams: { [key: string]: number }}) {
 
   const page = Number(searchParams?.page) || 0
-
   const category = params.category
 
-  const products = await getProductsInCategory({limit: itemsPerPage, page: page, category: category})
+  // const products = await getProductsInCategory({limit: itemsPerPage, page: page, category: category})
+  // const categories = await getCategories()
+
+  const productsData = getProductsInCategory({limit: itemsPerPage, page: page, category: category})
+  const categoriesData = getCategories()
+  const [products, categories] = await Promise.all([productsData, categoriesData]);
 
   return (
     <ProductsPage
@@ -36,6 +40,7 @@ export default async function Products({params, searchParams}: {params: { catego
       totalProducts={totalProducts}
       itemsPerPage={itemsPerPage}
       category={category}
+      categories={categories}
     />
   )
 }

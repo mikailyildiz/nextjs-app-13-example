@@ -2,6 +2,7 @@ import Image from 'next/image'
 import Link from 'next/link'
 import styles from './styles.module.css'
 import Pagination from '@/app/components/pagination'
+import LinkButton from '../linkButton'
 
 
 type PageProps = {
@@ -9,10 +10,11 @@ type PageProps = {
   currentPage: number
   totalProducts: number
   itemsPerPage: number
-  category?: string
+  category?: string,
+  categories: [string]
 }
 
-export default function ProductsPage ({ products, currentPage, totalProducts, itemsPerPage, category }: PageProps) {
+export default function ProductsPage ({ products, currentPage, totalProducts, itemsPerPage, category, categories }: PageProps) {
 
 
   const pageLink = category? `/products/${category}` : '/products'
@@ -22,11 +24,17 @@ export default function ProductsPage ({ products, currentPage, totalProducts, it
     <main className="flex min-h-screen flex-col items-center justify-between p-24">
       <div className="z-10 w-full max-w-5xl items-center justify-between font-mono text-sm lg:flex">
         <p className="fixed left-0 top-0 flex w-full justify-center border-b border-gray-300 bg-gradient-to-b from-zinc-200 pb-6 pt-8 backdrop-blur-2xl dark:border-neutral-800 dark:bg-zinc-800/30 dark:from-inherit lg:static lg:w-auto  lg:rounded-xl lg:border lg:bg-gray-200 lg:p-4 lg:dark:bg-zinc-800/30">
-          Products Page{category && ` - ${category}`}
+          Products Page{category && ` - ${decodeURIComponent(category)}`}
         </p>
         <div>
         <Link href={'/'}>Home page</Link>
         </div>
+      </div>
+
+      <div>
+      {categories.map((item: string, index: number) => (
+        <LinkButton selectedCategory={category} key={index} text={item} url={`/products/${encodeURIComponent(item)}`}/>
+      )) }
       </div>
 
       <div className="z-10 w-full max-w-5xl items-center justify-between font-mono text-sm lg:flex">

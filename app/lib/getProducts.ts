@@ -4,7 +4,7 @@ export default async function getProducts(params: { limit: number, page: number 
     page
   } = params
 
-  const res = await fetch(`https://fakestoreapi.com/products?limit=${limit}&page=${page}`, { cache: 'no-store' })
+  const res = await fetch(`https://fakestoreapi.com/products?limit=${limit}&page=${page}`)
 
   return res.json()
 }
