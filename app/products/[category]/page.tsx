@@ -11,6 +11,8 @@ const itemsPerPage = 20
 //     searchParams: { [key: string]: string | string[] | undefined };
 // }
 
+export const revalidate = 20;
+
 export const metadata = {
   title: 'Products',
   description: 'Free shipping on millions of items.',
@@ -31,7 +33,9 @@ export async function generateStaticParams() {
 
 export default async function Products({params, searchParams}: {params: { category: string }, searchParams: { [key: string]: number }}) {
 
-  const page = Number(searchParams?.page) || 0
+  let page = 0
+  //page = Number(searchParams?.page) || 0
+
   const category = params.category
 
   // const products = await getProductsInCategory({limit: itemsPerPage, page: page, category: category})
