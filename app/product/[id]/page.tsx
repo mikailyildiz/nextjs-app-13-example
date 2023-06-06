@@ -31,7 +31,7 @@ if (params.id)
         <main className="flex min-h-screen flex-col items-center justify-between p-24">
           <BackButton />
           <div >
-            <CategoryMenu category={product.category} />
+            <CategoryMenu category={encodeURIComponent(product.category)} />
             <Image
               src={product.image}
               alt={product.title}
