@@ -1,10 +1,8 @@
-export default async function getProducts(params: { limit: number, page: number }) {
-  const {
-    limit,
-    page
-  } = params
+import { generateQueryStr } from "../utils"
 
-  const res = await fetch(`https://fakestoreapi.com/products?limit=${limit}&page=${page}`)
+export default async function getProducts(params: { limit: number, page: number }) {
+
+  const res = await fetch(generateQueryStr('https://fakestoreapi.com/products?', params))
 
   return res.json()
 }
