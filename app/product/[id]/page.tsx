@@ -1,4 +1,5 @@
 import BackButton from '@/app/components/backButton'
+import CategoryMenu from '@/app/components/categoryMenu'
 import getProduct from '@/app/lib/getProduct'
 import Image from 'next/image'
 
@@ -30,6 +31,7 @@ if (params.id)
         <main className="flex min-h-screen flex-col items-center justify-between p-24">
           <BackButton />
           <div >
+            <CategoryMenu category={product.category} />
             <Image
               src={product.image}
               alt={product.title}
