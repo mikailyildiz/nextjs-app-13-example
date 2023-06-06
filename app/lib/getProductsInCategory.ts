@@ -5,7 +5,9 @@ export default async function getProductsInCategory(params: { limit: number, pag
     category
   } = params
 
-  const res = await fetch(`https://fakestoreapi.com/products/category/${category}/?limit=${limit}&page=${page}`)
+  const res = await fetch(`https://fakestoreapi.com/products/category/${category}/?limit=${limit}&page=${page}`,
+    { next: { tags: ['collection'] } }
+  )
 
   return res.json()
 }

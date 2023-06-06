@@ -11,7 +11,7 @@ const itemsPerPage = 20
 //     searchParams: { [key: string]: string | string[] | undefined };
 // }
 
-export const revalidate = 20;
+//export const revalidate = 20;
 
 export const metadata = {
   title: 'Products',
