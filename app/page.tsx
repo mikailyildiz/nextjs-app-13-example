@@ -1,6 +1,8 @@
 import Image from 'next/image'
 import Link from 'next/link'
 import Button from './components/button'
+import logoImg from '../public/vercel.svg'
+
 
 export default function Home() {
   return (
@@ -25,11 +27,9 @@ export default function Home() {
           >
             By{' '}
             <Image
-              src="/vercel.svg"
+              src={logoImg}
               alt="Vercel Logo"
               className="dark:invert"
-              width={100}
-              height={24}
               priority
             />
           </a>
