@@ -23,22 +23,22 @@ const nextConfig = {
 
 
       //distDir: 'build',
-      basePath: process.env.BASE_PATH,
+      //basePath: process.env.BASE_PATH,
       //compress: false,
       //assetPrefix: process.env.CDN_URL,
 
-      async rewrites() {
-        return [
-          {
-            source: '/blog',
-            destination: 'https://www.techcareer.net/blog'
-          },
-          {
-            source: '/blog/:slug',
-            destination: 'https://www.techcareer.net/blog/:slug'
-          }
-        ]
-      }
+      // async rewrites() {
+      //   return [
+      //     {
+      //       source: '/blog',
+      //       destination: 'https://www.techcareer.net/blog'
+      //     },
+      //     {
+      //       source: '/blog/:slug',
+      //       destination: 'https://www.techcareer.net/blog/:slug'
+      //     }
+      //   ]
+      // }
 }
 
 module.exports = nextConfig
