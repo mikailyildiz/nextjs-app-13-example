@@ -12,6 +12,8 @@ export default function Home() {
           Get started by editing&nbsp;
           <code className="font-mono font-bold">app/page.tsx</code>
         </p>
+        {process.env.HOSTNAME}
+        {process.env.NEXT_PUBLIC_ANALYTICS_ID}
         <div>
           <Link href={'/products'} prefetch={false}>Products page</Link>
         </div>

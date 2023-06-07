@@ -23,8 +23,9 @@ const nextConfig = {
 
 
       //distDir: 'build',
-      //basePath: '/shop',
+      basePath: process.env.BASE_PATH,
 
+      //assetPrefix: process.env.CDN_URL,
 
       async rewrites() {
         return [
