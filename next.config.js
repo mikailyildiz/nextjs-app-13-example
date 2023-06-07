@@ -24,7 +24,7 @@ const nextConfig = {
 
       //distDir: 'build',
       basePath: process.env.BASE_PATH,
-
+      //compress: false,
       //assetPrefix: process.env.CDN_URL,
 
       async rewrites() {
