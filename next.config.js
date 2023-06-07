@@ -22,8 +22,22 @@ const nextConfig = {
       },
 
 
-      distDir: 'build',
-      basePath: '/shop'
+      //distDir: 'build',
+      //basePath: '/shop',
+
+
+      async rewrites() {
+        return [
+          {
+            source: '/blog',
+            destination: 'https://www.techcareer.net/blog'
+          },
+          {
+            source: '/blog/:slug',
+            destination: 'https://www.techcareer.net/blog/:slug'
+          }
+        ]
+      }
 }
 
 module.exports = nextConfig
