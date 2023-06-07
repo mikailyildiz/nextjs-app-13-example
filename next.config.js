@@ -20,6 +20,10 @@ const nextConfig = {
           },
         ],
       },
+
+
+      distDir: 'build',
+      basePath: '/shop'
 }
 
 module.exports = nextConfig
