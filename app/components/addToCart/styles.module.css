@@ -1,0 +1,16 @@
+.amountInput {
+  color: black;
+  border: 1px solid gray;
+  padding: 5px;
+  text-align: center;
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.formButton {
+  background: gray;
+  color: black;
+  padding: 5px;
+  border: 1px solid #fff;
+  margin-left: 5px;
+}

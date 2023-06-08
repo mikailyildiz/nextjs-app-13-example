@@ -1,3 +1,4 @@
+import AddToCart from '@/app/components/addToCart'
 import BackButton from '@/app/components/backButton'
 import CategoryMenu from '@/app/components/categoryMenu'
 import getProduct from '@/app/lib/getProduct'
@@ -39,6 +40,9 @@ if (params.id)
               height="200"
               priority={true}
             />
+            <div>
+              <AddToCart />
+            </div>
             <h2>{product.title}</h2>
             <span>{product.price}</span>
             <p>{product.description}</p>
