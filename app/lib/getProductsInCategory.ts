@@ -7,7 +7,10 @@ export default async function getProductsInCategory(params: { limit: number, pag
 
 
   const res = await fetch(generateQueryStr(`https://fakestoreapi.com/products/category/${category}/?`, params),
-    { next: { tags: ['collection'] } }
+    { 
+      //cache: 'no-store',
+      next: { tags: ['collection'] } 
+    }
   )
 
   return res.json()

@@ -7,6 +7,9 @@ export default async function RootLayout({
 
 
   return (
-      <div>{children}</div>
+      <div>
+        <h2>Product Layout</h2>
+        {children}
+        </div>
   )
 }
