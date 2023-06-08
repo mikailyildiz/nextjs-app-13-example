@@ -1,5 +1,6 @@
-'use server';
-import { cookies } from 'next/headers';
+// 'use server';
+
+// import { cookies } from 'next/headers';
 
 export async function addToCart(formData) {
 
@@ -8,9 +9,9 @@ export async function addToCart(formData) {
   const amount = formData.get('amount')
   console.log("amount:", amount)
 
-  const cartId = cookies().get('cartId')?.value;
-  console.log("cartId", cartId)
-  
+  // const cartId = cookies().get('cartId')?.value;
+  // console.log("cartId", cartId)
+
   const res = await fetch('https://fakestoreapi.com/carts',
   {
     method: 'POST',
