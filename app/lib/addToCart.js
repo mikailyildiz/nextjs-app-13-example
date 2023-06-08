@@ -1,13 +1,16 @@
 'use server';
+import { cookies } from 'next/headers';
 
 export async function addToCart(formData) {
 
   console.log("formData", formData)
 
   const amount = formData.get('amount')
-
   console.log("amount:", amount)
 
+  const cartId = cookies().get('cartId')?.value;
+  console.log("cartId", cartId)
+  
   const res = await fetch('https://fakestoreapi.com/carts',
   {
     method: 'POST',
