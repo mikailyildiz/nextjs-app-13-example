@@ -5,14 +5,24 @@ import type { NextRequest } from 'next/server';
 export function middleware(request: NextRequest) {
 
 
-    if (!request.cookies.has('token')) {
-        return NextResponse.redirect(new URL('/', request.url));
-    }
+    // if (!request.cookies.has('token')) {
+    //     return NextResponse.redirect(new URL('/', request.url));
+    // }
 
-    //return response
+    const response = NextResponse.next();
+
+    response.cookies.set({
+      name: 'cartId',
+      value: '1234567',
+      secure: true,
+      httpOnly: true,
+      path: '/',
+    });
+
+    return response
   }
    
-  // See "Matching Paths" below to learn more
-  export const config = {
-    matcher: '/user/:path*',
-  };
+  // // See "Matching Paths" below to learn more
+  // export const config = {
+  //   matcher: '/user/:path*',
+  // };
