@@ -1,8 +1,11 @@
-import AddToCart from '@/app/components/addToCart'
-import BackButton from '@/app/components/backButton'
-import CategoryMenu from '@/app/components/categoryMenu'
+import AddToCart from '@/app/[lang]/components/addToCart'
+import BackButton from '@/app/[lang]/components/backButton'
+import CategoryMenu from '@/app/[lang]/components/categoryMenu'
 import getProduct from '@/app/lib/getProduct'
 import Image from 'next/image'
+
+import { Locale } from '../../../../i18n-config'
+import { getDictionary } from '../../../../get-dictionary'
 
 // type PageProps = {
 //   params: { id: number };
@@ -22,11 +25,13 @@ export async function generateMetadata({params}: {params: {id: number}}) {
   }
 }
 
-export default async function Products({params}: {params: {id: number}}) {
+export default async function Products({params: {id, lang}}: {params: {id: number, lang: Locale}}) {
+
+  const dictionary = await getDictionary(lang)
 
 let product
-if (params.id)
-  product = await getProduct(params.id);
+if (id)
+  product = await getProduct(id);
 
     return (
         <main className="flex min-h-screen flex-col items-center justify-between p-24">
@@ -41,8 +46,9 @@ if (params.id)
               priority={true}
             />
             <div>
-              <AddToCart />
+              <AddToCart dictionary={dictionary.cart}/>
             </div>
+            <p>Current locale: {lang}</p>
             <h2>{product.title}</h2>
             <span>{product.price}</span>
             <p>{product.description}</p>

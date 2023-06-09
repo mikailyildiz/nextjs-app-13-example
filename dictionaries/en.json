@@ -1,0 +1,8 @@
+{
+  "server-component": {
+    "welcome": "Welcomee"
+  },
+  "cart": {
+    "addToCart": "Add to cart"
+  }
+}

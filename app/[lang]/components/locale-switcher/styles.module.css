@@ -1,0 +1,15 @@
+.langListItem {
+  display: inline-block;
+  margin: 4px;
+}
+
+.langListItemLink {
+  border: 1px solid #fff;
+  padding: 4px;
+  text-align: center;
+}
+
+.langActive {
+  color: black;
+  background-color: #fff;
+}

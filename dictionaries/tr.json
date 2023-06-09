@@ -1,0 +1,8 @@
+{
+  "server-component": {
+    "welcome": "Hoş geldiniz"
+  },
+  "cart": {
+    "addToCart": "Sepete ekle"
+  }
+}

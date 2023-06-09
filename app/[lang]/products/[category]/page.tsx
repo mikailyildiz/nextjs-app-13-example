@@ -1,4 +1,4 @@
-import ProductsPage from '@/app/components/productsPage'
+import ProductsPage from '@/app/[lang]/components/productsPage'
 import getCategories from '@/app/lib/getCategories'
 import getProducts from '@/app/lib/getProducts'
 import getProductsInCategory from '@/app/lib/getProductsInCategory'

@@ -1,7 +1,7 @@
 import Image from 'next/image'
 import Link from 'next/link'
 import styles from './styles.module.css'
-import Pagination from '@/app/components/pagination'
+import Pagination from '@/app/[lang]/components/pagination'
 import LinkButton from '../linkButton'
 
 

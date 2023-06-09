@@ -1,4 +1,4 @@
-import { generateQueryStr } from "../utils"
+import { generateQueryStr } from "../[lang]/utils"
 
 export default async function getProducts(params: { limit: number, page: number }) {
 

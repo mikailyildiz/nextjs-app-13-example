@@ -1,8 +1,8 @@
 import Link from 'next/link'
 import React from 'react'
-import usePagination from '@/app/hooks/usePagination'
+import usePagination from '../../../hooks/usePagination'
 import styles from './styles.module.css'
-import { PaginationProps } from '@/app/types'
+import { PaginationProps } from '../../types'
 
 // export type PaginationProps = {
 //   totalItems: number

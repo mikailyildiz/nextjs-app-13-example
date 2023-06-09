@@ -1,9 +1,9 @@
 import Image from 'next/image'
 import Link from 'next/link'
-import Pagination from '@/app/components/pagination'
+import Pagination from '@/app/[lang]/components/pagination'
 import getProducts from '@/app/lib/getProducts'
 import ProductsPage from '../components/productsPage'
-import getCategories from '../lib/getCategories'
+import getCategories from '../../lib/getCategories'
 
 const totalProducts= 100
 const itemsPerPage = 20

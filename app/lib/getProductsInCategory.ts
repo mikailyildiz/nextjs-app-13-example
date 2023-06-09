@@ -1,4 +1,4 @@
-import { generateQueryStr } from "../utils"
+import { generateQueryStr } from "../[lang]/utils"
 
 export default async function getProductsInCategory(params: { limit: number, page: number, category: string }) {
   const {
