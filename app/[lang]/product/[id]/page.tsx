@@ -46,7 +46,7 @@ if (id)
               priority={true}
             />
             <div>
-              <AddToCart dictionary={dictionary.cart}/>
+              <AddToCart dictionary={dictionary.cart} productId={id}/>
             </div>
             <p>Current locale: {lang}</p>
             <h2>{product.title}</h2>

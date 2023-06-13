@@ -14,3 +14,7 @@
   border: 1px solid #fff;
   margin-left: 5px;
 }
+
+.formButton:disabled {
+  opacity: .5;
+}

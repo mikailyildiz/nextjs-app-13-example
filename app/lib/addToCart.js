@@ -2,15 +2,12 @@
 
 // import { cookies } from 'next/headers';
 
-export async function addToCart({color, amount}) {
+export async function addToCart({productId, color, amount}) {
 
   //const amount = formData.get('amount')
 
   // const cartId = cookies().get('cartId')?.value;
   // console.log("cartId", cartId)
-
-  console.log("addToCart")
-  console.log("verileri", color, amount)
 
   const res = await fetch('https://fakestoreapi.com/carts',
   {
@@ -19,7 +16,7 @@ export async function addToCart({color, amount}) {
       {
         userId:5,
         date:new Date('2020-02-03'),
-        products:[{productId:5, quantity:amount, color: color}]
+        products:[{productId:productId, quantity:amount, color: color}]
     }
     )
   });

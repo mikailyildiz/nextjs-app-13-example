@@ -1,0 +1,21 @@
+.errorMessage {
+  border:1px solid #ccc;
+  padding: 4px;
+  border-radius: 4px;
+  margin-top: 5px;
+}
+
+.warning {
+  border-color: orange;
+  color: orange;
+}
+
+.error {
+  border-color: red;
+  color: red;
+}
+
+.success {
+  border-color: green;
+  color: green;
+}
