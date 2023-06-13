@@ -26,7 +26,9 @@ export const metadata = {
 
 export default async function Products({searchParams}: {searchParams: { [key: string]: number }}) {
 
-  const page = Number(searchParams?.page) || 0
+  let page = 0
+
+  // page = Number(searchParams?.page) || 0
   
   // const products = await getProducts({limit: itemsPerPage, page: page})
   // const categories = await getCategories()

@@ -1,0 +1,14 @@
+.bookmark {
+  cursor: pointer;
+  position: absolute;
+  right: 5px;
+}
+
+.bookmark svg {
+  width: 30px;
+  height: 30px;
+}
+
+.bookmark.selected svg {
+  fill: darkslateblue;
+}

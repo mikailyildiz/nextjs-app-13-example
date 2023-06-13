@@ -1,8 +1,12 @@
+'use client'
+
 import Image from 'next/image'
 import Link from 'next/link'
 import styles from './styles.module.css'
 import Pagination from '@/app/[lang]/components/pagination'
 import LinkButton from '../linkButton'
+import AddBookmark from '../addBookmark'
+import { useEffect, useState } from 'react'
 
 
 type PageProps = {
@@ -19,6 +23,38 @@ export default function ProductsPage ({ products, currentPage, totalProducts, it
 
   const pageLink = category? `/products/${category}` : '/products'
 
+  const numberArray: number[] = [];
+  const [bookmarks, setBookmarks] = useState(numberArray)
+
+  useEffect(() => {
+    readStorage()
+  }, [])
+
+  const readStorage = () => {
+    const lsBookmarks:any = localStorage.getItem('bookmarks')
+    const parseBookmark = JSON.parse(lsBookmarks)
+
+    if (parseBookmark){
+      setBookmarks(parseBookmark)
+    }
+  }
+
+  const onBookmark = (id:number) => {
+    let bookmarkList:any
+
+    if (checkBookmark(id)){
+      bookmarkList = bookmarks.filter((e:number) => e != id)
+    } else {
+      bookmarkList = [...bookmarks, id]
+    }
+
+    setBookmarks(bookmarkList)
+    localStorage.setItem('bookmarks', JSON.stringify(bookmarkList))
+  }
+
+  const checkBookmark = (id:number) => {
+    return bookmarks.includes(id)
+  }
 
   return (
     <main className="flex min-h-screen flex-col items-center justify-between p-24">
@@ -40,17 +76,20 @@ export default function ProductsPage ({ products, currentPage, totalProducts, it
       <div className="z-10 w-full max-w-5xl items-center justify-between font-mono text-sm lg:flex">
         <div>
           {products.map((item: any, index: number) => (
-            <Link key={item.id} href={`/product/${item.id}`} className={styles.productCard}>
-              <Image 
-                src={item.image}
-                alt={item.title}
-                width="100"
-                height="100"
-                priority={index < 3}
-              />
-              {item.title}
-              <p>{item.category} - {item.price}</p>
-            </Link>
+            <div className={styles.productCard} key={item.id}>
+              <AddBookmark selected={checkBookmark(item.id)} onBookmark={() => onBookmark(item.id)} />
+              <Link href={`/product/${item.id}`}>
+                <Image 
+                  src={item.image}
+                  alt={item.title}
+                  width="100"
+                  height="100"
+                  priority={index < 3}
+                />
+                {item.title}
+                <p>{item.category} - {item.price}</p>
+              </Link>
+            </div>
           ))}
         </div>
       </div>
