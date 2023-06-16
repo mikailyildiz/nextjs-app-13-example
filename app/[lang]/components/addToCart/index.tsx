@@ -29,14 +29,14 @@ export default function AddToCart ({
       color: form.color.value as string
     }
 
-    if (data.color == '')
-    {
-      setErrorMessage({message: "Renk bilgisi giriniz", type: "warning"})
-      return
-    } else if (data.amount < 1){
-      setErrorMessage({message: "Miktar en az 1 olmalı", type: "error"})
-      return
-    }
+    // if (data.color == '')
+    // {
+    //   setErrorMessage({message: "Renk bilgisi giriniz (client)", type: "warning"})
+    //   return
+    // } else if (data.amount < 1){
+    //   setErrorMessage({message: "Miktar en az 1 olmalı (client)", type: "error"})
+    //   return
+    // }
 
     startTransition(async () =>{
       const result = await addToCart(data)
@@ -45,6 +45,8 @@ export default function AddToCart ({
         setTimeout(() => {
           setErrorMessage({message: '', type: ''})
         }, 3000);
+      } else if(!result || result.error){
+        setErrorMessage({message: result.message, type: result.type})
       }
     })
 
