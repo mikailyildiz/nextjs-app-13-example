@@ -20,9 +20,9 @@ export const metadata = {
   },
 }
 
-export async function generateStaticParams() {
-  return i18n.locales.map((locale) => ({ lang: locale }))
-}
+// export async function generateStaticParams() {
+//   return i18n.locales.map((locale) => ({ lang: locale }))
+// }
 
 export default function RootLayout({
   children,

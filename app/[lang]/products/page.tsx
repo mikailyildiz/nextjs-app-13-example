@@ -4,6 +4,7 @@ import Pagination from '@/app/[lang]/components/pagination'
 import getProducts from '@/app/lib/getProducts'
 import ProductsPage from '../components/productsPage'
 import getCategories from '../../lib/getCategories'
+import { cookies } from 'next/headers'
 
 const totalProducts= 100
 const itemsPerPage = 20
@@ -37,6 +38,11 @@ export default async function Products({searchParams}: {searchParams: { [key: st
   const categoriesData = getCategories()
   const [products, categories] = await Promise.all([productsData, categoriesData]);
 
+  const cookieStore = cookies()
+  const cookieBookmarks = cookieStore.get('bookmarks')
+  const parseBookmarks = cookieBookmarks ? JSON.parse(cookieBookmarks.value) : []
+
+
   return (
    <ProductsPage
     products={products}
@@ -44,6 +50,7 @@ export default async function Products({searchParams}: {searchParams: { [key: st
     totalProducts={totalProducts}
     itemsPerPage={itemsPerPage}
     categories={categories}
+    bookmarks={parseBookmarks}
    />
   )
 }

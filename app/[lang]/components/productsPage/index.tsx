@@ -5,8 +5,9 @@ import Link from 'next/link'
 import styles from './styles.module.css'
 import Pagination from '@/app/[lang]/components/pagination'
 import LinkButton from '../linkButton'
+import { useState, useTransition } from 'react'
+import { addBookmark } from "@/app/lib/addBookmark";
 import AddBookmark from '../addBookmark'
-import { useEffect, useState } from 'react'
 
 
 type PageProps = {
@@ -15,47 +16,32 @@ type PageProps = {
   totalProducts: number
   itemsPerPage: number
   category?: string,
-  categories: [string]
+  categories: [string],
+  bookmarks?: [number]
 }
 
-export default function ProductsPage ({ products, currentPage, totalProducts, itemsPerPage, category, categories }: PageProps) {
+export default function ProductsPage ({ products, currentPage, totalProducts, itemsPerPage, category, categories, bookmarks }: PageProps) {
 
 
   const pageLink = category? `/products/${category}` : '/products'
 
-  const numberArray: number[] = [];
-  const [bookmarks, setBookmarks] = useState(numberArray)
+  const [bookmarkState, setBookmarkState] = useState(bookmarks || [])
+  let [isPending, startTransition] = useTransition()
 
-  useEffect(() => {
-    readStorage()
-  }, [])
-
-  const readStorage = () => {
-    // const lsBookmarks:any = localStorage.getItem('bookmarks')
-    const lsBookmarks:any = sessionStorage.getItem('bookmarks')
-    const parseBookmark = JSON.parse(lsBookmarks)
-
-    if (parseBookmark){
-      setBookmarks(parseBookmark)
-    }
-  }
 
   const onBookmark = (id:number) => {
-    let bookmarkList:any
 
-    if (checkBookmark(id)){
-      bookmarkList = bookmarks.filter((e:number) => e != id)
-    } else {
-      bookmarkList = [...bookmarks, id]
-    }
+    startTransition(async ()=> {
+      const result = await addBookmark({productId: id})
+      if (result){
+        setBookmarkState(result)
+      }
+    })
 
-    setBookmarks(bookmarkList)
-    // localStorage.setItem('bookmarks', JSON.stringify(bookmarkList))
-    sessionStorage.setItem('bookmarks', JSON.stringify(bookmarkList))
   }
 
   const checkBookmark = (id:number) => {
-    return bookmarks.includes(id)
+    return bookmarkState && bookmarkState.includes(id)
   }
 
   return (
