@@ -5,9 +5,10 @@ import Link from 'next/link'
 import styles from './styles.module.css'
 import Pagination from '@/app/[lang]/components/pagination'
 import LinkButton from '../linkButton'
-import { useState, useTransition } from 'react'
+import { useEffect, useState, useTransition } from 'react'
 import { addBookmark } from "@/app/lib/addBookmark";
 import AddBookmark from '../addBookmark'
+import Cookies from 'js-cookie'
 
 
 type PageProps = {
@@ -21,6 +22,10 @@ type PageProps = {
 }
 
 export default function ProductsPage ({ products, currentPage, totalProducts, itemsPerPage, category, categories, bookmarks }: PageProps) {
+
+  useEffect(() => {
+    // console.log("mycookiebookmarks", Cookies.get('bookmarks'))
+  }, [])
 
 
   const pageLink = category? `/products/${category}` : '/products'

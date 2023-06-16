@@ -21,7 +21,7 @@ export async function addBookmark({productId}) {
     name: 'bookmarks',
     value: JSON.stringify(bookmarkList),
     secure: true,
-    httpOnly: true,
+    //httpOnly: true,
     path: '/',
   })
 
