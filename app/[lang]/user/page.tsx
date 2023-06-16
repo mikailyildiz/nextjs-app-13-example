@@ -1,4 +1,5 @@
 import Link from 'next/link'
+import LoginForm from '../components/loginForm'
 
 export const metadata = {
   title: 'User',
@@ -15,6 +16,9 @@ export default function User() {
         </p>
         <div>
         <Link href={'/'}>Home page</Link>
+        </div>
+        <div>
+          <LoginForm />
         </div>
       </div>
 

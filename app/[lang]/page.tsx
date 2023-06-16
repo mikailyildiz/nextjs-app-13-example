@@ -30,6 +30,9 @@ export default async function Home({
           <Link href={'/products'} prefetch={false}>Products page</Link>
         </div>
         <div>
+          <Link href={'/user'} prefetch={false}>User page</Link>
+        </div>
+        <div>
           <Button />
         </div>
         <OpenModal />
