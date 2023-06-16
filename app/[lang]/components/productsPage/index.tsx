@@ -31,7 +31,8 @@ export default function ProductsPage ({ products, currentPage, totalProducts, it
   }, [])
 
   const readStorage = () => {
-    const lsBookmarks:any = localStorage.getItem('bookmarks')
+    // const lsBookmarks:any = localStorage.getItem('bookmarks')
+    const lsBookmarks:any = sessionStorage.getItem('bookmarks')
     const parseBookmark = JSON.parse(lsBookmarks)
 
     if (parseBookmark){
@@ -49,7 +50,8 @@ export default function ProductsPage ({ products, currentPage, totalProducts, it
     }
 
     setBookmarks(bookmarkList)
-    localStorage.setItem('bookmarks', JSON.stringify(bookmarkList))
+    // localStorage.setItem('bookmarks', JSON.stringify(bookmarkList))
+    sessionStorage.setItem('bookmarks', JSON.stringify(bookmarkList))
   }
 
   const checkBookmark = (id:number) => {
