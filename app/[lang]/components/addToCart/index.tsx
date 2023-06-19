@@ -11,8 +11,8 @@ export default function AddToCart ({
 }: {
   dictionary: {
     addToCart: string,
-    productId: number
-  }
+  },
+  productId: number
 }) {
 
   let [isPending, startTransition] = useTransition()

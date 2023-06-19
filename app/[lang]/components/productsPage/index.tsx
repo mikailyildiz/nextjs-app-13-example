@@ -30,7 +30,8 @@ export default function ProductsPage ({ products, currentPage, totalProducts, it
 
   const pageLink = category? `/products/${category}` : '/products'
 
-  const [bookmarkState, setBookmarkState] = useState(bookmarks || [])
+  const bookmarksType : number[] = [];
+  const [bookmarkState, setBookmarkState] = useState(bookmarks || bookmarksType)
   let [isPending, startTransition] = useTransition()
 
 
