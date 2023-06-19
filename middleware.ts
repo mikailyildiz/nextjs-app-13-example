@@ -24,6 +24,7 @@ function getLocale(request: NextRequest): string | undefined {
 
 export function middleware(request: NextRequest) {
   const pathname = request.nextUrl.pathname
+  const search = request.nextUrl.search
 
   // // `/_next/` and `/api/` are ignored by the watcher, but we need to ignore files in `public` manually.
   // // If you have one
@@ -53,7 +54,7 @@ export function middleware(request: NextRequest) {
     // The new URL is now /en-US/products
         // Örneğin. gelen istek /products
     // Yeni URL artık /en-US/products
-    return NextResponse.redirect(new URL(`/${locale}/${pathname}`, request.url))
+    return NextResponse.redirect(new URL(`/${locale}/${pathname}${search}`, request.url))
   }
 
 
@@ -62,7 +63,7 @@ export function middleware(request: NextRequest) {
 
   if (isUserPage) {
       if (!request.cookies.has('token')) {
-        return NextResponse.redirect(new URL(`/login`, request.url));
+        return NextResponse.redirect(new URL(`/login?backUrl=${pathname}`, request.url));
     }
   }
 

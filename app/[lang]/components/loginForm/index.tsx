@@ -4,14 +4,14 @@ import { startTransition, useState, useTransition } from 'react'
 import { userLogin } from "@/app/lib/userLogin";
 import styles from './styles.module.css'
 import ErrorMessage from '../errorMessage';
-import { useRouter } from 'next/navigation';
-
+import { useRouter, useSearchParams } from 'next/navigation';
 
 export default function Loginform () {
   let [isPending, startTransition] = useTransition()
   const [errorMessage, setErrorMessage] = useState({message: '', type: ''})
 
   const router = useRouter()
+  const searchParams = useSearchParams()
 
   const formSubmit = (e:any) => {
     e.preventDefault()
@@ -29,8 +29,8 @@ export default function Loginform () {
       const result = await userLogin(data)
       
       if (result && result.token){
-        //kulanıcı sayfasına yönlendirme
-        router.push('/user')
+        const url = searchParams.get('backUrl') || '/user'
+        router.push(url)
       } else if(!result || result.error){
         setErrorMessage({message: result.message, type: result.type})
       }
