@@ -1,7 +1,31 @@
+.loginForm {
+  display: flex;
+  flex-direction: column;
+  width: 300px;
+  height: 300px;
+}
+
+.loginForm input {
+  margin-bottom: 15px;
+  padding: 5px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  color: black;
+}
+.loginForm p {
+  margin: 5px;
+  font-size: 12px;
+  color: #eee; 
+}
+
 .loginButton {
   background: gray;
   color: black;
   padding: 5px;
   border: 1px solid #fff;
-  margin-left: 5px;
+  margin-top: 15px;
+}
+
+.loginButton:disabled {
+  opacity: .5;
 }
