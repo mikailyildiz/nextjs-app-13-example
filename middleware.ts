@@ -55,6 +55,17 @@ export function middleware(request: NextRequest) {
     // Yeni URL artık /en-US/products
     return NextResponse.redirect(new URL(`/${locale}/${pathname}`, request.url))
   }
+
+
+  const regex = /^\/([^\/]+)\/user/;
+  const isUserPage = regex.test(pathname)
+
+  if (isUserPage) {
+      if (!request.cookies.has('token')) {
+        return NextResponse.redirect(new URL(`/login`, request.url));
+    }
+  }
+
 }
 
 export const config = {

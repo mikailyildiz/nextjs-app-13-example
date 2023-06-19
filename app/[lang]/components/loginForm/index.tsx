@@ -47,7 +47,7 @@ export default function Loginform () {
       <input placeholder="User Name" type="text" id="userName" name="userName" />
       <label htmlFor="password">Password</label>
       <input placeholder="Password" type="password" id="password" name="password" />
-      <button className={styles.loginButton} type="submit">Login</button>
+      <button disabled={isPending} className={styles.loginButton} type="submit">Login</button>
       <p>user name: donero password: ewedon</p>
       {errorMessage.message && <ErrorMessage {...errorMessage} />}
     </form>
