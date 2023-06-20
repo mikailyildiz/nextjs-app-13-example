@@ -1,12 +1,12 @@
 import Link from 'next/link'
 import LoginForm from '../components/loginForm'
+import LoginPage from '../components/loginPage'
 
 export const metadata = {
   title: 'Login',
 }
 
 export default function Login() {
-
 
   return (
     <main className="flex min-h-screen flex-col items-center justify-between p-24">
@@ -19,8 +19,9 @@ export default function Login() {
         </div>
       </div>
       <div>
-          <LoginForm />
-        </div>
+          {/* <LoginForm /> */}
+          <LoginPage />
+      </div>
     </main>
   )
 }
