@@ -4,9 +4,9 @@ import { useState, useTransition } from 'react'
 import styles from './styles.module.css'
 import ErrorMessage from '../errorMessage';
 import { useRouter, useSearchParams } from 'next/navigation';
-import { useLoginMutation } from '@/app/services/auth';
+import { api, useLoginMutation } from '@/app/services/auth';
 import { setCredentials } from '@/app/slice/authSlice';
-import { useDispatch } from 'react-redux';
+import { useAppDispatch } from '@/app/hooks/store';
 
 export default function LoginFormRedux () {
   const [errorMessage, setErrorMessage] = useState({message: '', type: ''})
@@ -14,7 +14,8 @@ export default function LoginFormRedux () {
   const router = useRouter()
   const searchParams = useSearchParams()
 
-  const dispatch = useDispatch()
+  const dispatch = useAppDispatch();
+
   const [login, { isLoading }] = useLoginMutation()
 
 
@@ -30,9 +31,23 @@ export default function LoginFormRedux () {
     }
 
     try {
-      const res = await login(data).unwrap()
-      dispatch(setCredentials(res))
-      console.log("auth response:", res)
+      const resToken = await login(data).unwrap()
+
+      const userId = 1
+
+      const resUser = await dispatch(api.endpoints.getUser.initiate(userId))
+
+      console.log(resUser.data)
+
+      dispatch(setCredentials({
+        token: resToken.token,
+        user: {...resUser.data}
+      }))
+
+      const url = searchParams.get('backUrl') || '/user'
+      router.push(url)
+
+      // console.log("auth response:", res)
       //router.push('/user')
     } catch (error) {
       setErrorMessage({message: "Kullanıcı adı veya şifre hatalı", type: "error"})

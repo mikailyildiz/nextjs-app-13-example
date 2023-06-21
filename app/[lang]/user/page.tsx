@@ -8,7 +8,7 @@ export const metadata = {
 
 export default async function User() {
 
-  const user = await getUser()
+  //const user = await getUser()
 
   return (
     <main className="flex min-h-screen flex-col items-center justify-between p-24">
@@ -20,7 +20,7 @@ export default async function User() {
         <Link href={'/'}>Home page</Link>
         </div>
         <div>
-          <UserDetail {...user} />
+          <UserDetail />
         </div>
       </div>
 

@@ -1,6 +1,7 @@
 import './globals.css'
 import { Inter } from 'next/font/google'
 import { i18n } from '../../i18n-config'
+import Providers from './components/provider'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -32,11 +33,13 @@ export default function RootLayout({
   params: { lang: string }
 }) {
   return (
-    <html lang={params.lang}>
-      <body className={inter.className}>
-        <h1>Root layout</h1>
-        {children}
-        </body>
-    </html>
+    <Providers>
+      <html lang={params.lang}>
+        <body className={inter.className}>
+          <h1>Root layout</h1>
+          {children}
+          </body>
+      </html>
+    </Providers>
   )
 }

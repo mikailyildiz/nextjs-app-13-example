@@ -1,6 +1,6 @@
 import Link from 'next/link'
 import LoginForm from '../components/loginForm'
-import LoginPage from '../components/loginPage'
+import LoginFormRedux from '../components/loginFormRedux'
 
 export const metadata = {
   title: 'Login',
@@ -20,7 +20,7 @@ export default function Login() {
       </div>
       <div>
           {/* <LoginForm /> */}
-          <LoginPage />
+          <LoginFormRedux />
       </div>
     </main>
   )

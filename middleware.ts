@@ -62,9 +62,9 @@ export function middleware(request: NextRequest) {
   const isUserPage = regex.test(pathname)
 
   if (isUserPage) {
-      if (!request.cookies.has('token')) {
-        return NextResponse.redirect(new URL(`/login?backUrl=${pathname}`, request.url));
-    }
+    //   if (!request.cookies.has('token')) {
+    //     return NextResponse.redirect(new URL(`/login?backUrl=${pathname}`, request.url));
+    // }
   }
 
 }
