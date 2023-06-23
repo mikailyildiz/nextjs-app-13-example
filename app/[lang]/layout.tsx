@@ -2,6 +2,7 @@ import './globals.css'
 import { Inter } from 'next/font/google'
 import { i18n } from '../../i18n-config'
 import Providers from './components/provider'
+import Script from 'next/script'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -39,6 +40,14 @@ export default function RootLayout({
           <h1>Root layout</h1>
           {children}
           </body>
+          <Script
+            src="https://cdn.taboola.com/scripts/eidf.es5.js"
+            strategy="lazyOnload"
+          />
+          <Script
+            src="https://static.ads-twitter.com/uwt.js"
+            strategy="lazyOnload"
+          />
       </html>
     </Providers>
   )

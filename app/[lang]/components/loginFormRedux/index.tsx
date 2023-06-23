@@ -41,7 +41,14 @@ export default function LoginFormRedux () {
 
       dispatch(setCredentials({
         token: resToken.token,
-        user: {...resUser.data}
+        user: {
+          email: "",
+          id: 1,
+          name: {
+            firstname: "",
+            lastname: ""
+          }
+        }
       }))
 
       const url = searchParams.get('backUrl') || '/user'
