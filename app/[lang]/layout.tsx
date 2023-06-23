@@ -4,7 +4,7 @@ import { i18n } from '../../i18n-config'
 import Providers from './components/provider'
 import Script from 'next/script'
 
-const inter = Inter({ subsets: ['latin'] })
+const inter = Inter({ subsets: ['latin'], weight: ['200', '900', '700']  })
 
 export const metadata = {
   title: 'Create Next App',
