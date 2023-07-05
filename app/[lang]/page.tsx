@@ -5,6 +5,7 @@ import OpenModal from './components/openModal'
 import LocaleSwitcher from './components/locale-switcher'
 import { getDictionary } from '../../get-dictionary'
 import { Locale } from '../../i18n-config'
+import ReducerExample from './components/reducerExample'
 
 
 export default async function Home({
@@ -42,6 +43,8 @@ export default async function Home({
       </div>
 
       <LocaleSwitcher lang={lang} />
+
+      <ReducerExample />
 
       <div className="mb-32 grid text-center lg:mb-0 lg:grid-cols-4 lg:text-left">
         <a
